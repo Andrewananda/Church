@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/sermonFragment">
+    <fragment
+        android:id="@+id/sermonFragment"
+        android:name="com.example.churchapp.views.SermonFragment"
+        android:label="fragment_sermon"
+        tools:layout="@layout/fragment_sermon" >
+        <action
+            android:id="@+id/action_sermonFragment_to_detailSermon"
+            app:destination="@id/detailSermon" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailSermon"
+        android:name="com.example.churchapp.views.DetailSermon"
+        android:label="DetailSermon"
+        tools:layout="@layout/fragment_detail_sermon">
+        <argument
+            android:name="selectedSermon"
+            app:argType="com.example.churchapp.models.Sermon"/>
+    </fragment>
+</navigation>
