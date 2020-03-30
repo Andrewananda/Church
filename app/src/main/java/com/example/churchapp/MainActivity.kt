@@ -5,6 +5,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.churchapp.views.SermonFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.navigation.*
+import java.lang.reflect.Array.newInstance
+import java.net.URLClassLoader.newInstance
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         bottom_navigation.setOnNavigationItemSelectedListener { menuItem->
             when(menuItem.itemId){
-                R.id.navigation_home -> {
+                R.id.navigation_home-> {
                     val homeFragment = SermonFragment()
                     loadFragment(homeFragment)
                     return@setOnNavigationItemSelectedListener true
@@ -26,9 +29,9 @@ class MainActivity : AppCompatActivity() {
     private fun loadFragment(fragment: Fragment) {
         // load fragment
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.navigation_home, fragment)
+        transaction.replace(R.id.container, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
 }
+

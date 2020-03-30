@@ -50,7 +50,6 @@ class SermonFragment : Fragment() {
             }
         })
 
-
         return binding.root
     }
 
