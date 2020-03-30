@@ -11,7 +11,8 @@
         tools:layout="@layout/fragment_sermon" >
         <action
             android:id="@+id/action_sermonFragment_to_detailSermon"
-            app:destination="@id/detailSermon" />
+            app:destination="@id/detailSermon"
+            app:popUpTo="@id/detailSermon" />
     </fragment>
     <fragment
         android:id="@+id/detailSermon"

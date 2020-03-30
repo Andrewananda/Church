@@ -10,7 +10,7 @@ fun bindStatus(statusImageView: ImageView, status: SermonApiStatus?) {
     when(status) {
         SermonApiStatus.LOADING->{
             statusImageView.visibility = View.VISIBLE
-            statusImageView.setImageResource(R.drawable.loading_image)
+            statusImageView.setImageResource(R.drawable.loading_animation)
         }
         SermonApiStatus.ERROR->{
             statusImageView.visibility = View.VISIBLE
