@@ -23,4 +23,10 @@
             android:name="selectedSermon"
             app:argType="com.example.churchapp.models.Sermon"/>
     </fragment>
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.example.churchapp.views.EventsFragment"
+        android:label="EventsFragment"
+        tools:layout="@layout/fragment_events"
+        />
 </navigation>

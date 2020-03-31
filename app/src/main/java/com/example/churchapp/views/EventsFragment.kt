@@ -18,14 +18,15 @@ import com.example.churchapp.databinding.FragmentEventsBinding
  */
 class EventsFragment : Fragment() {
 private lateinit var binding:FragmentEventsBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding  = DataBindingUtil.inflate(inflater,R.layout.fragment_events,container,false)
+        binding.setLifecycleOwner(this)
+
 
         return binding.root
     }
-
+    companion object {
+        fun getInstance(): EventsFragment = EventsFragment()
+    }
 }
