@@ -3,6 +3,7 @@ package com.example.churchapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toolbar
 import androidx.appcompat.app.ActionBar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<BottomNavigationView>(R.id.bottom_navigation)
             .setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            
+
         }
 
     }
