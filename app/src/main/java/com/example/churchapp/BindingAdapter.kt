@@ -1,9 +1,14 @@
 package com.example.churchapp
 
+import android.os.Build
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.databinding.BindingAdapter
+import com.example.churchapp.models.Sermon
 import com.example.churchapp.repositories.SermonApiStatus
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @BindingAdapter("ApiStatus")
 fun bindStatus(statusImageView: ImageView, status: SermonApiStatus?) {
@@ -21,3 +26,5 @@ fun bindStatus(statusImageView: ImageView, status: SermonApiStatus?) {
         }
     }
 }
+
+
