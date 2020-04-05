@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.churchapp.models.Sermon
-import com.example.churchapp.repositories.SermonApiStatus
+import com.example.churchapp.repositories.ApiStatus
 import com.example.churchapp.repositories.SermonRepository
 import kotlinx.coroutines.*
 
 class Sermonviewmodel : ViewModel() {
    private val sermonRepository:SermonRepository = SermonRepository()
     val response:LiveData<List<Sermon>>
-    val status:LiveData<SermonApiStatus>
+    val status:LiveData<ApiStatus>
     //navigation
     private val _navigateToSelectedSermon = MutableLiveData<Sermon>()
     val navigateToSelectedSermon:LiveData<Sermon>
@@ -34,7 +34,7 @@ class Sermonviewmodel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        coroutineScope.cancel()
+        job.cancel()
     }
 
     fun displaySelectedSermon(selectedSermon:Sermon){

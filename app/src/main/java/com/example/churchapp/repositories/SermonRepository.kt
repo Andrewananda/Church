@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.churchapp.data.ApiService
 import com.example.churchapp.models.Sermon
-enum class SermonApiStatus{LOADING,ERROR,DONE}
+enum class ApiStatus{LOADING,ERROR,DONE}
 
 class SermonRepository {
     //check on status to display data
-    val _status = MutableLiveData<SermonApiStatus>()
-    val status:LiveData<SermonApiStatus>
+    val _status = MutableLiveData<ApiStatus>()
+    val status:LiveData<ApiStatus>
     get() = _status
 
     //get APi response
@@ -21,14 +21,14 @@ class SermonRepository {
    suspend fun getSermons(){
         val getDeferred = sermonApi.retrofitService.getSermons()
         try {
-            _status.value = SermonApiStatus.LOADING
+            _status.value = ApiStatus.LOADING
             val results = getDeferred.await()
 
-            _status.value = SermonApiStatus.DONE
+            _status.value = ApiStatus.DONE
             _response.value = results
 
         }catch (t:Throwable){
-            _status.value = SermonApiStatus.ERROR
+            _status.value = ApiStatus.ERROR
             _response.value = ArrayList()
         }
 

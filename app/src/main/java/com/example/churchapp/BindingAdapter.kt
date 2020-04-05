@@ -6,22 +6,22 @@ import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.databinding.BindingAdapter
 import com.example.churchapp.models.Sermon
-import com.example.churchapp.repositories.SermonApiStatus
+import com.example.churchapp.repositories.ApiStatus
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @BindingAdapter("ApiStatus")
-fun bindStatus(statusImageView: ImageView, status: SermonApiStatus?) {
+fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
     when(status) {
-        SermonApiStatus.LOADING->{
+        ApiStatus.LOADING->{
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.loading_animation)
         }
-        SermonApiStatus.ERROR->{
+        ApiStatus.ERROR->{
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_connection_error)
         }
-        SermonApiStatus.DONE->{
+        ApiStatus.DONE->{
             statusImageView.visibility = View.GONE
         }
     }

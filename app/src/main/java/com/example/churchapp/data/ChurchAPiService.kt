@@ -1,5 +1,6 @@
 package com.example.churchapp.data
 
+import com.example.churchapp.models.Event
 import com.example.churchapp.models.Sermon
 import com.example.churchapp.utils.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -23,6 +24,8 @@ val retrofit = Retrofit.Builder()
 interface MakersApiService {
     @GET("sermons")
     fun getSermons(): Deferred<List<Sermon>>
+    @GET("events")
+    fun getEvents():Deferred<List<Event>>
 }
 
 object ApiService{
