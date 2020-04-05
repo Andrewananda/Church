@@ -21,15 +21,16 @@ import com.example.churchapp.viewmodels.EventViewModel
  * create an instance of this fragment.
  */
 class EventsFragment : Fragment() {
-private val viewModel:EventViewModel by lazy {
-    ViewModelProvider(this).get(EventViewModel::class.java)
-}
+private lateinit var viewModel:EventViewModel
 private lateinit var binding:FragmentEventsBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding  = DataBindingUtil.inflate(inflater,R.layout.fragment_events,container,false)
         binding.setLifecycleOwner(this)
+        //initialize viewmodel
+        viewModel = ViewModelProvider(this).get(EventViewModel::class.java)
         binding.viewmodel = viewModel
+        //get instance of adapter
         val adapter = EventAdapter()
         binding.eventRecyclerview.adapter = adapter
         viewModel.response.observe(viewLifecycleOwner, Observer {

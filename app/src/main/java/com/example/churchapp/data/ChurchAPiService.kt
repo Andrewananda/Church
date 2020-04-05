@@ -24,6 +24,7 @@ val retrofit = Retrofit.Builder()
 interface MakersApiService {
     @GET("sermons")
     fun getSermons(): Deferred<List<Sermon>>
+
     @GET("events")
     fun getEvents():Deferred<List<Event>>
 }

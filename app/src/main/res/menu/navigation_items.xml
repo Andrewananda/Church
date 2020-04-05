@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/sermonFragment"
+    <item android:id="@id/sermonFragment"
         android:title="Home"
         android:icon="@drawable/ic_home_black_24dp"/>
-    <item android:id="@+id/eventsFragment"
+    <item android:id="@id/eventsFragment"
         android:title="Events"
         android:icon="@drawable/ic_today_black_24dp"/>
     <item android:id="@+id/fellowship"

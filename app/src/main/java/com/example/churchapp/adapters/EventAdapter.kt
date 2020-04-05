@@ -14,6 +14,7 @@ class EventAdapter : ListAdapter<Event,EventAdapter.EventViewHolder>(EventDiffUt
             binding.title.text = item.title
             binding.description.text = item.description
             binding.eventDate.text = item.date
+            binding.executePendingBindings()
         }
     }
 
