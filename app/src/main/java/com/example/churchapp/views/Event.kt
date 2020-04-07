@@ -11,26 +11,24 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.churchapp.R
 import com.example.churchapp.adapters.EventAdapter
-import com.example.churchapp.databinding.FragmentEventsBinding
+import com.example.churchapp.databinding.FragmentEventBinding
 import com.example.churchapp.viewmodels.EventViewModel
-
 
 /**
  * A simple [Fragment] subclass.
- * Use the [EventsFragment.newInstance] factory method to
- * create an instance of this fragment.
  */
-class EventsFragment : Fragment() {
-private lateinit var viewModel:EventViewModel
-private lateinit var binding:FragmentEventsBinding
+class Event : Fragment() {
+    private val viewModel:EventViewModel by lazy {
+        ViewModelProvider(this).get(EventViewModel::class.java)
+    }
+    private lateinit var binding:FragmentEventBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding  = DataBindingUtil.inflate(inflater,R.layout.fragment_events,container,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_event,container,false)
         binding.setLifecycleOwner(this)
-        //initialize viewmodel
-        viewModel = ViewModelProvider(this).get(EventViewModel::class.java)
         binding.viewmodel = viewModel
-        //get instance of adapter
+        //setting adapter
         val adapter = EventAdapter()
         binding.eventRecyclerview.adapter = adapter
         viewModel.response.observe(viewLifecycleOwner, Observer {
@@ -39,7 +37,7 @@ private lateinit var binding:FragmentEventsBinding
             }
         })
 
-
         return binding.root
     }
+
 }

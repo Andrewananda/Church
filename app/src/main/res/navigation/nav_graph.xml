@@ -25,9 +25,9 @@
     </fragment>
     <fragment
         android:id="@+id/eventsFragment"
-        android:name="com.example.churchapp.views.EventsFragment"
+        android:name="com.example.churchapp.views.Event"
         android:label="Events"
-        tools:layout="@layout/fragment_events"
+        tools:layout="@layout/fragment_event"
         />
     <fragment
         android:id="@+id/fragmentFellowship"
