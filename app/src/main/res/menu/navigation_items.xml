@@ -6,7 +6,7 @@
     <item android:id="@id/eventsFragment"
         android:title="Events"
         android:icon="@drawable/ic_today_black_24dp"/>
-    <item android:id="@+id/fellowship"
+    <item android:id="@+id/fragmentFellowship"
         android:title="Fellowship"
         android:icon="@drawable/ic_people_black_24dp"/>
     <item android:id="@+id/contact"

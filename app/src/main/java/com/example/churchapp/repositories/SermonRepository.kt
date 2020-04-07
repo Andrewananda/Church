@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.churchapp.data.ApiService
 import com.example.churchapp.models.Sermon
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
 enum class ApiStatus{LOADING,ERROR,DONE}
 
 class SermonRepository {
@@ -20,17 +23,17 @@ class SermonRepository {
 
    suspend fun getSermons(){
         val getDeferred = sermonApi.retrofitService.getSermons()
-        try {
-            _status.value = ApiStatus.LOADING
-            val results = getDeferred.await()
+           try {
+               _status.value = ApiStatus.LOADING
+               val results = getDeferred.await()
 
-            _status.value = ApiStatus.DONE
-            _response.value = results
+               _status.value = ApiStatus.DONE
+               _response.value = results
 
-        }catch (t:Throwable){
-            _status.value = ApiStatus.ERROR
-            _response.value = ArrayList()
-        }
+           } catch (t: Throwable) {
+               _status.value = ApiStatus.ERROR
+               _response.value = ArrayList()
+           }
 
     }
 }

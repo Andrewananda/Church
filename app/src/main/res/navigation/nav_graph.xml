@@ -29,4 +29,10 @@
         android:label="Events"
         tools:layout="@layout/fragment_events"
         />
+    <fragment
+        android:id="@+id/fragmentFellowship"
+        android:name="com.example.churchapp.views.FragmentFellowship"
+        android:label="FragmentFellowship"
+        tools:layout="@layout/fragment_fellowship"
+        />
 </navigation>

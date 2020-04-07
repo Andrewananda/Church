@@ -1,6 +1,7 @@
 package com.example.churchapp.data
 
 import com.example.churchapp.models.Event
+import com.example.churchapp.models.Fellowship
 import com.example.churchapp.models.Sermon
 import com.example.churchapp.utils.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -27,6 +28,10 @@ interface MakersApiService {
 
     @GET("events")
     fun getEvents():Deferred<List<Event>>
+
+    @GET("fellowships")
+    fun getFellowships():Deferred<List<Fellowship>>
+
 }
 
 object ApiService{

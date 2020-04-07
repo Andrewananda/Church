@@ -17,8 +17,7 @@ class Sermonviewmodel : ViewModel() {
     val navigateToSelectedSermon:LiveData<Sermon>
         get() = _navigateToSelectedSermon
 
-    val job = Job()
-    val coroutineScope = CoroutineScope(job + Dispatchers.Main)
+    val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     init {
         getSermons()
@@ -34,7 +33,7 @@ class Sermonviewmodel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        job.cancel()
+        coroutineScope.cancel()
     }
 
     fun displaySelectedSermon(selectedSermon:Sermon){
