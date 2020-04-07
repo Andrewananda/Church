@@ -12,9 +12,9 @@ class FellowshipAdapter : ListAdapter<Fellowship,FellowshipAdapter.FellowshipVie
 
     inner class FellowshipViewHolder(val binding:FellowshipItemBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(item:Fellowship) {
-            binding.scripture.text = item.scripture
             binding.description.text = item.description
             binding.fellowshipDate.text = item.created_at
+            binding.scripture.text = item.title
             binding.executePendingBindings()
         }
     }
