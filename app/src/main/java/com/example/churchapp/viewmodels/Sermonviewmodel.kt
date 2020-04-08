@@ -17,7 +17,7 @@ class Sermonviewmodel : ViewModel() {
     val navigateToSelectedSermon:LiveData<Sermon>
         get() = _navigateToSelectedSermon
 
-    val coroutineScope = CoroutineScope(Dispatchers.Main)
+    val coroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     init {
         getSermons()

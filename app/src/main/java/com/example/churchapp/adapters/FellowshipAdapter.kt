@@ -14,7 +14,7 @@ class FellowshipAdapter : ListAdapter<Fellowship,FellowshipAdapter.FellowshipVie
         fun bind(item:Fellowship) {
             binding.description.text = item.description
             binding.fellowshipDate.text = item.created_at
-            binding.scripture.text = item.title
+            binding.scripture.text = item.title.toUpperCase()
             binding.executePendingBindings()
         }
     }

@@ -11,15 +11,7 @@
 
     </data>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="187dp"
-        android:paddingTop="20dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,7 +22,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:paddingTop="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,15 +32,12 @@
 
             <TextView
                 android:id="@+id/date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewmodel.selectedSermon.created_at}"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.903"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/featured_photo"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/featured_photo" />
 
             <TextView
                 android:id="@+id/title"
@@ -57,36 +45,52 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_marginTop="4dp"
-                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
                 android:text="@{viewmodel.selectedSermon.title}"
+                app:textAllCaps="true"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/scrollView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/date" />
 
-            <TextView
-                android:id="@+id/description"
+            <ScrollView
+                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_marginTop="20dp"
-                android:text="@{viewmodel.selectedSermon.description}"
+                android:layout_height="400dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/sermon_by"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                app:layout_constraintTop_toBottomOf="@+id/title">
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewmodel.selectedSermon.description}"
+                    android:textSize="20sp"
+                    android:lineSpacingMultiplier="1.2"
+                    app:layout_constraintEnd_toEndOf="@+id/scrollView"
+                    app:layout_constraintStart_toStartOf="@+id/scrollView" />
+            </ScrollView>
+
 
             <TextView
                 android:id="@+id/sermon_by"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"
                 android:text="@{viewmodel.selectedSermon.sermon_by}"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.005"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description" />
+                app:layout_constraintTop_toBottomOf="@+id/scrollView"
+                app:layout_constraintBottom_toBottomOf="@+id/scrollView"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 </layout>

@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/fragmentFellowship"
         android:name="com.example.churchapp.views.FragmentFellowship"
-        android:label="FragmentFellowship"
+        android:label="Fellowships"
         tools:layout="@layout/fragment_fellowship"
         />
 </navigation>
