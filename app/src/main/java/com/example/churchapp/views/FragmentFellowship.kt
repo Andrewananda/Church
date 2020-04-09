@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 import com.example.churchapp.R
 import com.example.churchapp.adapters.FellowshipAdapter
@@ -28,11 +29,19 @@ private lateinit var binding:FragmentFellowshipBinding
         binding.setLifecycleOwner(this)
         binding.viewmodel = viewmodel
         //adding adapter and submitting new list if updated
-        val adapter = FellowshipAdapter()
+        val adapter = FellowshipAdapter(FellowshipAdapter.OnClickListener{
+            viewmodel.showSelectedFellowship(it)
+        })
         binding.fellowshipRecyclerview.adapter = adapter
         viewmodel.response.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+        viewmodel.navigateToSelectedFellowship.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                this.findNavController().navigate(FragmentFellowshipDirections.actionFragmentFellowshipToSingleFellowship(it))
+                viewmodel.showSelectedFellowshipDone()
             }
         })
 

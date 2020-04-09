@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.churchapp.databinding.FellowshipItemBinding
 import com.example.churchapp.models.Fellowship
 
-class FellowshipAdapter : ListAdapter<Fellowship,FellowshipAdapter.FellowshipViewHolder>(FellowshipDiffUtill) {
+class FellowshipAdapter(val clickListener:OnClickListener) : ListAdapter<Fellowship,FellowshipAdapter.FellowshipViewHolder>(FellowshipDiffUtill) {
 
     inner class FellowshipViewHolder(val binding:FellowshipItemBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(item:Fellowship) {
             binding.description.text = item.description
             binding.fellowshipDate.text = item.created_at
-            binding.scripture.text = item.title.toUpperCase()
+            binding.scripture.text = item.title?.toUpperCase()
             binding.executePendingBindings()
         }
     }
@@ -25,6 +25,9 @@ class FellowshipAdapter : ListAdapter<Fellowship,FellowshipAdapter.FellowshipVie
 
     override fun onBindViewHolder(holder: FellowshipViewHolder, position: Int) {
         val item = getItem(position)
+        holder.itemView.setOnClickListener {
+            clickListener.onClick(item)
+        }
         holder.bind(item)
     }
 
@@ -36,7 +39,10 @@ class FellowshipAdapter : ListAdapter<Fellowship,FellowshipAdapter.FellowshipVie
         override fun areContentsTheSame(oldItem: Fellowship, newItem: Fellowship): Boolean {
             return oldItem == newItem
         }
+    }
 
+    class OnClickListener(val clickListener:(fellowship:Fellowship)->Unit) {
+        fun onClick(fellowship: Fellowship) = clickListener(fellowship)
     }
 
 }

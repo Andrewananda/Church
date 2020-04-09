@@ -38,14 +38,28 @@
         android:name="com.example.churchapp.views.FragmentFellowship"
         android:label="Fellowships"
         tools:layout="@layout/fragment_fellowship"
-        />
+        >
+        <action
+            android:id="@+id/action_fragmentFellowship_to_singleFellowship"
+            app:destination="@id/singleFellowship" />
+    </fragment>
     <fragment
         android:id="@+id/detailEvent"
         android:name="com.example.churchapp.views.DetailEvent"
-        android:label="DetailEvent"
+        android:label="Event"
         tools:layout="@layout/fragment_detail_event">
         <argument
             android:name="selectedEvent"
             app:argType="com.example.churchapp.models.Event"/>
+    </fragment>
+    <fragment
+        android:id="@+id/singleFellowship"
+        android:name="com.example.churchapp.views.SingleFellowship"
+        tools:layout="@layout/fragment_single_fellowship"
+        android:label="Fellowship">
+        <argument
+            android:name="selectedFellowship"
+            app:argType="com.example.churchapp.models.Fellowship"
+            />
     </fragment>
 </navigation>
