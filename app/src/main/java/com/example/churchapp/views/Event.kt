@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 import com.example.churchapp.R
 import com.example.churchapp.adapters.EventAdapter
@@ -29,13 +30,24 @@ class Event : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewmodel = viewModel
         //setting adapter
-        val adapter = EventAdapter()
+        val adapter = EventAdapter(EventAdapter.OnClickListener{
+            viewModel.displaySelectedEvent(it)
+        })
         binding.eventRecyclerview.adapter = adapter
         viewModel.response.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }
         })
+
+        //observe click event
+        viewModel.navigateToSelectedEvent.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                this.findNavController().navigate(EventDirections.actionEventsFragmentToDetailEvent(it))
+                viewModel.displaySelectedEventDone()
+            }
+        })
+
 
         return binding.root
     }

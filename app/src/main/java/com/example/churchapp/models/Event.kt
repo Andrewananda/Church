@@ -1,5 +1,9 @@
 package com.example.churchapp.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Event(
     val id:Int,
     val title: String,
@@ -9,4 +13,4 @@ data class Event(
     val remember_token:String,
     val created_at:String,
     val updated_at:String
-)
+):Parcelable

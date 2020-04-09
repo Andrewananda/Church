@@ -28,11 +28,24 @@
         android:name="com.example.churchapp.views.Event"
         android:label="Events"
         tools:layout="@layout/fragment_event"
-        />
+        >
+        <action
+            android:id="@+id/action_eventsFragment_to_detailEvent"
+            app:destination="@id/detailEvent" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentFellowship"
         android:name="com.example.churchapp.views.FragmentFellowship"
         android:label="Fellowships"
         tools:layout="@layout/fragment_fellowship"
         />
+    <fragment
+        android:id="@+id/detailEvent"
+        android:name="com.example.churchapp.views.DetailEvent"
+        android:label="DetailEvent"
+        tools:layout="@layout/fragment_detail_event">
+        <argument
+            android:name="selectedEvent"
+            app:argType="com.example.churchapp.models.Event"/>
+    </fragment>
 </navigation>

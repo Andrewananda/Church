@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.churchapp.databinding.EventItemBinding
 import com.example.churchapp.models.Event
 
-class EventAdapter : ListAdapter<Event,EventAdapter.EventViewHolder>(EventDiffUtil) {
+class EventAdapter(val clickListener:OnClickListener) : ListAdapter<Event,EventAdapter.EventViewHolder>(EventDiffUtil) {
     inner class EventViewHolder(val binding:EventItemBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(item:Event) {
             binding.title.text = item.title
@@ -24,6 +24,9 @@ class EventAdapter : ListAdapter<Event,EventAdapter.EventViewHolder>(EventDiffUt
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val item = getItem(position)
+        holder.itemView.setOnClickListener {
+            clickListener.onClick(item)
+        }
         holder.bind(item)
     }
 
@@ -37,6 +40,7 @@ class EventAdapter : ListAdapter<Event,EventAdapter.EventViewHolder>(EventDiffUt
         }
 
     }
-
-
+    class OnClickListener(val clickListener : (event:Event)->Unit ) {
+        fun onClick(event:Event) = clickListener(event)
+    }
 }
