@@ -11,7 +11,7 @@ data class Sermon(
     val sermon_by: String,
     val description:String,
     val scripture: String,
-    val remember_token:String,
+    val remember_token:String?,
     val created_at: String,
-    val updated_at: String
+    val updated_at: String?
 ): Parcelable

@@ -41,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                app:autoSizeTextType="uniform"
                 android:text="description"
                 android:maxLength="150"
                 android:layout_margin="8dp"

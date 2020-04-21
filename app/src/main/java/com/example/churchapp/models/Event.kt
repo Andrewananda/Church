@@ -12,5 +12,5 @@ data class Event(
     val featured_photo:String,
     val remember_token:String,
     val created_at:String,
-    val updated_at:String
+    val updated_at:String?
 ):Parcelable
