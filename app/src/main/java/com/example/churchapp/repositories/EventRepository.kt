@@ -7,7 +7,7 @@ import com.example.churchapp.data.ApiService
 import com.example.churchapp.models.Event
 import java.util.ArrayList
 
-enum class EventApiStatus{LOADING,ERROR,DONE}
+enum class EventApiStatus{ELOADING,EERROR,EDONE}
 
 class EventRepository {
     val apiService = ApiService
@@ -21,14 +21,14 @@ class EventRepository {
     suspend fun getEvents() {
         val getDeferred = apiService.retrofitService.getEvents()
         try {
-            _status.value = EventApiStatus.LOADING
+            _status.value = EventApiStatus.ELOADING
             val result =  getDeferred.await()
-            _status.value = EventApiStatus.DONE
+            _status.value = EventApiStatus.EDONE
             Log.i("EventRepository","Data available")
             _response.value = result
 
         }catch (t:Throwable) {
-            _status.value = EventApiStatus.ERROR
+            _status.value = EventApiStatus.EERROR
             Log.e("EventRepository","An error Occurred")
             _response.value = ArrayList()
         }

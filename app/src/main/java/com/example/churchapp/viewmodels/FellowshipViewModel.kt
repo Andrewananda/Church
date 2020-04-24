@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.churchapp.models.Fellowship
+import com.example.churchapp.repositories.FellowshipApiStatus
 import com.example.churchapp.repositories.FellowshipRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,6 +12,8 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class FellowshipViewModel : ViewModel() {
+    //get ApiStatus
+    val status:LiveData<FellowshipApiStatus>
     val fellowshipRepository = FellowshipRepository()
     val response:LiveData<List<Fellowship>>
     val coroutineScope = CoroutineScope(Dispatchers.Main)
@@ -22,6 +25,7 @@ class FellowshipViewModel : ViewModel() {
     init {
         getFellowships()
         response = fellowshipRepository.response
+        status = fellowshipRepository.status
     }
     fun getFellowships() {
         coroutineScope.launch {

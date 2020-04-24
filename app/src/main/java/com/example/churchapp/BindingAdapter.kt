@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.example.churchapp.repositories.ApiStatus
 import com.example.churchapp.repositories.EventApiStatus
+import com.example.churchapp.repositories.FellowshipApiStatus
 
 @BindingAdapter("ApiStatus")
 fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
@@ -24,20 +25,36 @@ fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
 }
 
 @BindingAdapter("EventApiStatus")
-fun bindStatus(statusImageView: ImageView, status: EventApiStatus?) {
+fun bindEventsStatus(statusImageView: ImageView, status: EventApiStatus?) {
     when(status) {
-        ApiStatus.LOADING->{
+        EventApiStatus.ELOADING ->{
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.loading_animation)
         }
-        ApiStatus.ERROR->{
+        EventApiStatus.EERROR ->{
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_connection_error)
         }
-        ApiStatus.DONE->{
+        EventApiStatus.EDONE ->{
             statusImageView.visibility = View.GONE
         }
     }
 }
 
+@BindingAdapter("FellowshipApiStatus")
+fun bindFellowshipStatus(statusImageView: ImageView, status: FellowshipApiStatus?) {
+    when(status) {
+        FellowshipApiStatus.FLOADING ->{
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.loading_animation)
+        }
+        FellowshipApiStatus.FERROR ->{
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        FellowshipApiStatus.FDONE ->{
+            statusImageView.visibility = View.GONE
+        }
+    }
+}
 
