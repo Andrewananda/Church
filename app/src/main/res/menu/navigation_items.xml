@@ -3,15 +3,17 @@
     <item android:id="@id/sermonFragment"
         android:title="Home"
         android:icon="@drawable/ic_home_black_24dp"/>
+
     <item android:id="@id/eventsFragment"
         android:title="Events"
         android:icon="@drawable/ic_today_black_24dp"/>
+
     <item android:id="@+id/fragmentFellowship"
         android:title="Fellowship"
         android:icon="@drawable/ic_people_black_24dp"/>
-    <item android:id="@+id/contact"
-        android:title="Contact"
-        android:icon="@drawable/ic_phone_black_24dp"/>
+<!--    <item android:id="@+id/contact"-->
+<!--        android:title="Contact"-->
+<!--        android:icon="@drawable/ic_phone_black_24dp"/>-->
 
 
 </menu>

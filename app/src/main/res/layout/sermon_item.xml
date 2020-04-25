@@ -62,7 +62,8 @@
                 android:id="@+id/featured_photo"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:src="@drawable/icon" />
+                app:srcCompat="@drawable/round_image"
+                />
 
         </androidx.cardview.widget.CardView>
 

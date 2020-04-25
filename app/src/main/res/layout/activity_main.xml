@@ -28,9 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="bottom"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/colorNavIcon"
-        app:itemTextColor="@android:color/white"
+        android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/navigation_items" />
